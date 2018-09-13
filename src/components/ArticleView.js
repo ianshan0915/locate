@@ -32,14 +32,15 @@ class ArticleView extends Component {
         const { text, claps, title, feature_img, owner } = this.props._article
         let owner_name, owner_type, owner_id
         let related_papers = []
+        let keywords = []
         if (owner) {
             const { name, type, _id } = owner
             owner_name = name
             owner_id = _id
             owner_type = type 
             related_papers = this.props._article.articles
+            keywords = this.props._article.keywords
         }
-
         return ( 
                 <div>
                 <div className="container-fluid main-container">
@@ -72,19 +73,21 @@ class ArticleView extends Component {
                         </div>
 
                         <div className="post-tags">
-                            <a className="tag" href="">Open-source</a>
-                            <a className="tag" href="">Community</a>
+                            { 
+                                keywords.map((keyword) => 
+                                <a className="tag" href=""> { keyword }</a>
+                                )                                
+                             }
                         </div>
 
                         <div className="post-stats clearfix">
                             <div className="pull-left">
                                 <div className="like-button-wrapper">
-                                    <button onClick={() => this.props.clap(this.props._article._id)} className="like-button" data-behavior="trigger-overlay" type="submit">
-                                    <i className="fa fa-heart-o"></i><span className="hide-text">Like</span>
+                                    <button onClick={() => this.props.clap(this.props._article._id)} className="like-button" data-behavior="trigger-overlay">
+                                        <i className="fa fa-heart-o"></i><span className="hide-text">Like</span>
                                     </button>
                                      <span className="like-count">{claps}</span>
                                 </div>
-
                             </div>
                             <div className="pull-left">
                                 <a className="response-icon-wrapper" href="#">
@@ -127,8 +130,8 @@ class ArticleView extends Component {
                                                 <img alt="" className="avatar-image" src="" height="40" width="40" />
                                             </div> */}
                                             <div className="post-info">
-                                                <strong className="pli-title"><a href={_paper.url_pdf}>{_paper.title}</a></strong><br/>
-                                                <small className="pli-username"><a href={_paper.url}>{_paper.text}</a></small>
+                                                <strong className="pli-title"><a href={_paper.url_pdf} target="_blank">{_paper.title}</a></strong><br/>
+                                                <small className="pli-username"><a href={_paper.url} target="_blank">{_paper.text}</a></small>
                                             </div>
                                         </div>
                                     </div>

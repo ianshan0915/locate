@@ -19,6 +19,7 @@ let RepoSchema = new mongoose.Schema(
                 // type: String
             }
         ],
+        keywords: [String],
         // comments: [
         //     {
         //         author: {
