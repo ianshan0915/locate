@@ -16,13 +16,23 @@ class Feed extends Component {
     componentWillReceiveProps(nextProps) {
         
     }
-        
+
     componentWillMount() {
-        this.props.loadArticles()
+        this.props.loadArticles(1)
     }
-    
+
+    // onScroll = () => {
+    //     if (
+    //         (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) &&
+    //         this.props.articles.length
+    //     ) {
+    //         console.log('test');
+    //         this.props.loadArticles(2);
+    //     }
+    //   }    
+
     render() {
-    const articles = this.props.articles.reverse().map((article)=>
+    const articles = this.props.articles.map((article)=>
                 <div className="post-panel">
 
                     <div className="post-metadata">

@@ -42,10 +42,10 @@ class ArticleView extends Component {
             keywords = this.props._article.keywords
         }
         return ( 
-                <div>
+            <div>
                 <div className="container-fluid main-container">
-                <div className="row animated fadeInUp" data-animation="fadeInUp-fadeOutDown">
-                    <div id="main-post" className="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
+                    <div className="row animated fadeInUp" data-animation="fadeInUp-fadeOutDown">
+                        <div id="main-post" className="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
 
                         <div className="pull-right">
                             {this.props.user ? <FollowButton user={`${this.props.user.following}`} to_follow={`${owner_id}`} /> : ''}
@@ -117,9 +117,9 @@ class ArticleView extends Component {
                         </div> */}
 
                     </div>
-                </div>
+                    </div>
 
-                <div className="post-show-footer row animated fadeInUp" data-animation="fadeInUp-fadeOutDown">
+                    <div className="post-show-footer row animated fadeInUp" data-animation="fadeInUp-fadeOutDown">
                     <div className="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-2 main-content related-stories">
                         <h4 className="small-heading">Related papers</h4>
                             {
@@ -138,52 +138,10 @@ class ArticleView extends Component {
                                 )                                
                             }
                     </div>
-
-                    {/* <div id="responses" className="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3 main-content">
-                        <h4 className="small-heading">Responses</h4>
-
-                        <div data-behavior="responses-list">
-                        </div>
-                    </div> */}
-                </div>
-
-                <div className="post-metadata-bar" data-page="post-metadata-bar">
-                    <div className="flex-container is-inView" data-behavior="animated-metadata">
-                        <div className="post-stats flex-container">
-                            <div className="like-button-wrapper">
-                                <form className="button_to" method="get" action=""><button className="like-button" data-behavior="trigger-overlay" type="submit">      <i className="fa fa-heart-o"></i><span className="hide-text">Like</span></button>
-                                </form> <span className="like-count">0</span>
-                            </div>
-
-
-                            <div>
-                                <a className="response-icon-wrapper" href="https://my-medium-clone.herokuapp.com/posts/it-s-looking-good#responses">
-                                    <i className="fa fa-comment-o"></i>
-                                    <span className="response-count" data-behavior="response-count">0</span>
-                                </a>
-                            </div>
-
-                            <div className="bookmark-button">
-                                <div className="bookmark-button-wrapper">
-                                    <form className="button_to" method="get" action=""><button className="bookmark-button" data-behavior="trigger-overlay" type="submit">      <span className="icon-bookmark-o"></span><span className="hide-text">Bookmark</span></button>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="metabar-author-info flex-container flex-space-btw">
-                            <div>
-                                {/* <img alt={owner_name} className="avatar-image" src="" height="35" width="35" /> */}
-                                <div data-react-className="PopoverLink" ><span className="popover-link" data-reactroot=""><a href={`/profile/${owner_id}`}>{owner_name}</a></span></div>
-                            </div>
-                            <div data-react-className="UserFollowButton" >
-                                {this.props.user ? <FollowButton user={`${this.props.user.following}`} to_follow={`${owner_id}`} /> : ''}
-                            </div>
-                        </div>
                     </div>
                 </div>
-                </div>
-                </div>
+
+            </div>
         );
     }
 }

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate');
 
 let RepoSchema = new mongoose.Schema(
     {
@@ -56,4 +57,7 @@ RepoSchema.methods.getOwnerRepo = function (_id) {
         return repo
     })
 }
+
+RepoSchema.plugin(mongoosePaginate);
+
 module.exports = mongoose.model('Repo', RepoSchema, 'repo')
