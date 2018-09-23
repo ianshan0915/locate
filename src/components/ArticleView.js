@@ -7,6 +7,7 @@ import {
 } from './../redux/actions/actions'
 import PropTypes from 'prop-types'
 import FollowButton from './FollowButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const mapStateToProps = state => {
     return {
@@ -84,14 +85,14 @@ class ArticleView extends Component {
                             <div className="pull-left">
                                 <div className="like-button-wrapper">
                                     <button onClick={() => this.props.clap(this.props._article._id)} className="like-button" data-behavior="trigger-overlay">
-                                        <i className="fa fa-heart-o"></i><span className="hide-text">Like</span>
+                                        <FontAwesomeIcon icon={['far', 'heart']} /><span className="hide-text">Like</span>
                                     </button>
                                      <span className="like-count">{claps}</span>
                                 </div>
                             </div>
                             <div className="pull-left">
                                 <a className="response-icon-wrapper" href="#">
-                                    <i className="fa fa-comment-o"></i>
+                                    <FontAwesomeIcon icon={['far', 'comment']} />
                                     <span className="response-count" data-behavior="response-count">0</span>
                                 </a>
                             </div>
@@ -126,9 +127,11 @@ class ArticleView extends Component {
                                 related_papers.map((_paper) => 
                                     <div className="post-list-item">
                                         <div className="flex-container">
-                                            {/* <div className="avatar-wrapper">
-                                                <img alt="" className="avatar-image" src="" height="40" width="40" />
-                                            </div> */}
+                                            <div className="avatar-wrapper">
+                                                <button>
+                                                    <FontAwesomeIcon icon={['far', 'edit']} />
+                                                </button>
+                                            </div>
                                             <div className="post-info">
                                                 <strong className="pli-title"><a href={_paper.url_pdf} target="_blank">{_paper.title}</a></strong><br/>
                                                 <small className="pli-username"><a href={_paper.url} target="_blank">{_paper.text}</a></small>

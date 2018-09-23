@@ -8,6 +8,10 @@ import ArticleView from './components/ArticleView'
 import Editor from './components/Editor'
 import requireAuthentication from './utils/requireAuth'
 import SignInWith from './components/SignInWith'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(far)
 //import  from './components'
 
 class App extends Component {
