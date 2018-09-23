@@ -128,9 +128,7 @@ class ArticleView extends Component {
                                     <div className="post-list-item">
                                         <div className="flex-container">
                                             <div className="avatar-wrapper">
-                                                <button>
-                                                    <FontAwesomeIcon icon={['far', 'edit']} />
-                                                </button>
+                                                <a href='/editor'><FontAwesomeIcon icon={['far', 'edit']} /></a>
                                             </div>
                                             <div className="post-info">
                                                 <strong className="pli-title"><a href={_paper.url_pdf} target="_blank">{_paper.title}</a></strong><br/>

@@ -18,12 +18,23 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 */
+
+#paper-title {
+  width: 80%;
+  box-shadow: none;
+  border:none;
+  margin-left: 1em; 
+}
+
+#update-action {
+  margin-left: 1em;
+  -webkit-appearance: none;
+}
+#editor-label {
+  font-size: 36px;
+}

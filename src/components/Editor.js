@@ -111,14 +111,14 @@ class Editor extends Component {
             hideDelay: 300
         },
         placeholder: {
-            text: 'Tell your story...'
+            text: 'Add your comment...'
         }
       /*
       placeholder: { text: "Tell your Story ...", hideOnClick: true },
       toolbar: {
         buttons: ['bold', 'italic']
       } */
-    })    
+    })
     editor.subscribe('editableInput', (ev, editable) => {
       if(typeof document !== 'undefined')
         this.setState({
@@ -130,6 +130,8 @@ class Editor extends Component {
     })
   }
     render() {
+      const tool = 'OpenClinica'
+      const paper_title = 'Electronic data capture and DICOM data management in multi-center clinical trials'
         return ( 
 <div>
   <EditorHeader publish={this.publishStory} loading={this.state.loading} />
@@ -143,10 +145,10 @@ class Editor extends Component {
                       <small>{this.props.user.email}</small>
                   </div>
               </div>
-
+              <label id='editor-label'>Update the link between repository with its papers</label>
               <form className="editor-form main-editor" autocomplete="off" >
 
-                <div className={this.state.imgSrc != null ? 'file-upload-previewer' : 'file-upload-previewer hidden'}>
+                {/* <div className={this.state.imgSrc != null ? 'file-upload-previewer' : 'file-upload-previewer hidden'}>
                   <img src="" alt="" id="image_preview"/>
                 </div>
 
@@ -157,19 +159,32 @@ class Editor extends Component {
                   <span className="picture_upload">
                     <i className="fa fa-camera" onClick={this.handleClick}></i>
                   </span>
+                </div> */}
+
+                <div className="form-group">
+                  <input className="editor-title" id="repo-title" placeholder="Name" type = 'text' value= {tool}/>
                 </div>
 
                 <div className="form-group">
-                  <textarea col="1" className="editor-title" id="editor-title" placeholder="Title"></textarea>
+                  <label>Paper: </label>
+                  <input id="paper-title" placeholder="Title" type = 'text' value= {paper_title} />
+                </div>
+                
+                <div className="form-group">
+                <label>Update: </label><select id = 'update-action'>
+                    <option value="vote">Confirm</option>
+                    <option value="delete">Delete</option>
+                    <option value="add">Add</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
-                  <textarea id="medium-editable" className="medium-editable" ></textarea>
+                  <textarea id="medium-editable" className="medium-editable" placeholder="Comment"></textarea>
                 </div>
 
-              <div class="hidden">
+              {/* <div class="hidden">
                 <input type="file" onChange={ ()=>this.previewImg()} id="file" ref="fileUploader"/>
-              </div>
+              </div> */}
 
               </form>
 
