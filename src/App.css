@@ -38,3 +38,13 @@
 #editor-label {
   font-size: 36px;
 }
+#heading-tabs {
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+#heading-tabsItem {
+  display: inline;
+  margin-right: 10px;
+}

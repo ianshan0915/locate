@@ -36,7 +36,7 @@ class AsideFeed extends Component {
         return (
     <div>
         <aside className="col-md-4 main-sidebar">
-            <h4 className="small-heading border-top">Featured Authors</h4>
+            <h4 className="small-heading border-top">Owners</h4>
             <div data-react-className="TagList" data-react-props="">
                 <div className="tags-wrapper undefined" data-reactroot="">
                     {owners}
@@ -44,7 +44,7 @@ class AsideFeed extends Component {
             </div>
 
 
-            <h4 className="small-heading border-top">Top stories</h4>
+            <h4 className="small-heading border-top">Top repositories</h4>
             <div className="sidebar-top-stories">
                 <ul>
                     {top_articles}

@@ -56,7 +56,7 @@ class ArticleView extends Component {
                             {/* <img alt={owner_name} className="avatar-image" src="" height="40" width="40" /> */}
                             <div className="post-info">
                                 <div data-react-className="PopoverLink" data-react-props="{&quot;user_id&quot;:608,&quot;url&quot;:&quot;/users/netk&quot;,&quot;children&quot;:&quot;netk&quot;}"><span className="popover-link" data-reactroot=""><a href={`/profile/${owner_id}`}>{owner_name}</a></span></div>
-                                <small>Published • nice story</small>
+                                {/* <small>Published • nice story</small> */}
                             </div>
                         </div>
 
@@ -99,7 +99,10 @@ class ArticleView extends Component {
 
                             <div className="pull-right">
                                 <div className="bookmark-button-wrapper">
-                                    <form className="button_to" method="get" action=""><button className="bookmark-button" data-behavior="trigger-overlay" type="submit">      <span className="icon-bookmark-o"></span><span className="hide-text">Bookmark</span></button>
+                                    <form className="button_to" method="get" action="">
+                                        <button className="bookmark-button" data-behavior="trigger-overlay" type="submit"> 
+                                            <span className="icon-bookmark-o"></span><span className="hide-text">Bookmark</span>
+                                        </button>
                                     </form>
                                 </div>
 

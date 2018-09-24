@@ -40,7 +40,7 @@ class Feed extends Component {
                         <div className="post-info">
                             <div data-react-className="PopoverLink">
                             <span className="popover-link" data-reactroot=""><a href={`/profile/${article.owner._id}`}>{article.owner.name}</a></span></div>
-                            <small>Posted • A must read</small>
+                            {/* <small>Posted • A must read</small> */}
                         </div>
                     </div>
 
@@ -82,13 +82,22 @@ class Feed extends Component {
         return ( 
             <div>
                 <div className="container-fluid main-container">
-                    <div className="col-md-6 col-md-offset-1 dashboard-main-content">
-                        <div className="posts-wrapper animated fadeInUp" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
-
-                            {articles}
+                    <div className="row">
+                        <div className="col-md-3 col-md-offset-1">
+                            <ul id="heading-tabs">
+                                <li id="heading-tabsItem"><button>Repos</button></li>
+                                <li id="heading-tabsItem"><button>Papers</button></li>
+                            </ul>
                         </div>
                     </div>
-                    {this.props.articles ? <AsideFeed _articles={this.props.articles} /> : ''}
+                    <div className="row">
+                        <div className="col-md-6 col-md-offset-1 dashboard-main-content">
+                            <div className="posts-wrapper animated fadeInUp" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
+                                {articles}
+                            </div>
+                        </div>
+                        {this.props.articles ? <AsideFeed _articles={this.props.articles} /> : ''}
+                    </div>
                 </div>
 
             </div>
