@@ -28,7 +28,7 @@ class App extends Component {
 
                     <Route path="/profile/:id" component={Profile} />
                     <Route path="/articleview/:id" component={ArticleView} />
-                    <Route path="/editor" component={Editor} />
+                    <Route path="/editor/:repo/:paper" component={Editor} />
                     {/* <Route path="/editor" component={requireAuthentication(Editor)} /> */}
                     <Route path="**" component={Feed} />
                 </Switch>

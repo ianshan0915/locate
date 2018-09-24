@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class EditorHeader extends Component {
     render() {
@@ -23,7 +24,7 @@ class EditorHeader extends Component {
         <ul className="nav navbar-nav navbar-right">
           <li className="publish-button">
             <button onClick={()=>this.props.publish()} className={this.props.loading === true ? "button green-inner-button dropdown-toggle" : "button green-border-button dropdown-toggle"} data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              {this.props.loading === true ? 'Updating' : 'Update'} <i className="fa fa-globe"></i>
+              {this.props.loading === true ? 'Updating' : 'Update'} <FontAwesomeIcon icon={['far', 'save']} />
             </button>
           </li>
         </ul>

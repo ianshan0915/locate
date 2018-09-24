@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const mapStateToProps = state => {
     return {
         _article: state.articles.article,
-        user: state.authUser.user    
+        user: state.authUser.user
     }
 }
 
@@ -109,17 +109,6 @@ class ArticleView extends Component {
                             </div>
                         </div>
 
-                        {/* <div className="author-info">
-                            <div clas="author-metadata">
-                                <img alt={owner_name} className="avatar-image" src="" height="50" width="50" />
-                                <div className="username-description">
-                                    <h4>{owner_name}</h4>
-                                    <p></p>
-                                </div>
-                            </div>
-                            {this.props.user ? <FollowButton user={`${this.props.user.following}`} to_follow={`${owner_id}`} /> : ''}
-                        </div> */}
-
                     </div>
                     </div>
 
@@ -131,7 +120,7 @@ class ArticleView extends Component {
                                     <div className="post-list-item">
                                         <div className="flex-container">
                                             <div className="avatar-wrapper">
-                                                <a href='/editor'><FontAwesomeIcon icon={['far', 'edit']} /></a>
+                                                <a href={`/editor/${this.props._article._id}/${_paper._id}`}><FontAwesomeIcon icon={['far', 'edit']} /></a>
                                             </div>
                                             <div className="post-info">
                                                 <strong className="pli-title"><a href={_paper.url_pdf} target="_blank">{_paper.title}</a></strong><br/>
@@ -149,16 +138,6 @@ class ArticleView extends Component {
         );
     }
 }
-/*function mapStateToProps (state, ownProps) {
-    const article_id = ownProps.match.params.id
-    let article = {}
-    state.articles.articles.forEach((_article)=>{
-        if(article_id == _article._id) {
-            article = _article
-        }
-    })
-    return { article }
-}*/
 ArticleView.propTypes = {
     params: PropTypes.object.isRequired
 }

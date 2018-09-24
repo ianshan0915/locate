@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { 
+  getArticle
+} from './../redux/actions/actions'
 import MediumEditor from 'medium-editor'
 import axios from 'axios'
 import EditorHeader from './EditorHeader'
 import './../../node_modules/medium-editor/dist/css/medium-editor.min.css'
 
+const mapStateToProps = state => {
+  return {
+      _article: state.articles.article,
+      user: state.authUser.user
+  }
+}
+
 class Editor extends Component {
   constructor () {
     super()
     this.state = {
-      title: '',
-      text: '',
-      description: '',
-      imgSrc: null,
+      repo: null,
+      paper: null,
+      action: '',
+      comment: '',
       loading: false
     }
     this.handleClick = this.handleClick.bind(this)
-    this.previewImg = this.previewImg.bind(this)
+    // this.previewImg = this.previewImg.bind(this)
     this.publishStory = this.publishStory.bind(this)
   }
 
@@ -28,13 +38,14 @@ class Editor extends Component {
     console.log('publishing...')
     const _url = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:5000/api/"
     const formdata = new FormData()
-    formdata.append('text', this.state.text)
-    formdata.append('image', this.state.imgSrc)
-    formdata.append('title', document.getElementById('editor-title').value)
-    formdata.append('author_id', this.props.user._id)
-    formdata.append('description', this.state.description)
-    formdata.append('claps', 0)
-    axios.post(`${_url}article`, /*{
+    formdata.append('repo', this.state.repo)
+    // formdata.append('image', this.state.imgSrc)
+    formdata.append('article', this.state.paper)
+    formdata.append('reviewer', this.props.user._id)
+    formdata.append('action', document.getElementById('update-action').value)
+    formdata.append('comment', document.getElementById('medium-editable').value)
+    console.log(formdata)
+    axios.post(`${_url}update`, /*{
       text: this.state.text,
       title: document.getElementById('editor-title').value,
       claps: 0,
@@ -54,19 +65,21 @@ class Editor extends Component {
     this.refs.fileUploader.click()
   }
 
-  previewImg () {
-    console.log('preview')
-    const file = this.refs.fileUploader.files[0]
-    var reader = new FileReader()
-    reader.onload = function (e) {
-      document.getElementById('image_preview').src = e.target.result
-      this.setState({
-        imgSrc: file/*e.target.result*/
-      })
-    }.bind(this)
-    reader.readAsDataURL(file)
-  }
-
+  // previewImg () {
+  //   console.log('preview')
+  //   const file = this.refs.fileUploader.files[0]
+  //   var reader = new FileReader()
+  //   reader.onload = function (e) {
+  //     document.getElementById('image_preview').src = e.target.result
+  //     this.setState({
+  //       imgSrc: file/*e.target.result*/
+  //     })
+  //   }.bind(this)
+  //   reader.readAsDataURL(file)
+  // }
+  componentWillMount() {
+    this.props.getArticle(this.props.match.params.repo)
+  }    
   componentDidMount () {
     const editor = new MediumEditor(/*dom, */".medium-editable",{ 
         autoLink: true,
@@ -122,16 +135,25 @@ class Editor extends Component {
     editor.subscribe('editableInput', (ev, editable) => {
       if(typeof document !== 'undefined')
         this.setState({
-          title: document.getElementById('editor-title').value,
-          text: editor.getContent(0),
-          description: `${editor.getContent(0).substring(0,30).toString()}...`
+          repo: this.props.match.params.repo,
+          paper: this.props.match.params.paper,          
+          action: document.getElementById('update-action').value,
+          comment: `${editor.getContent(0).substring(0,30).toString()}...`
         })
         console.log(this.state)
     })
   }
     render() {
-      const tool = 'OpenClinica'
-      const paper_title = 'Electronic data capture and DICOM data management in multi-center clinical trials'
+      const { title } = this.props._article
+      let related_papers = []
+      let paper_title = ''
+      if (title) {
+        related_papers = this.props._article.articles
+        const paper = related_papers.find(paper => paper._id === parseInt(this.props.match.params.paper))
+        if (paper) {
+          paper_title = paper.title
+        }
+      }
         return ( 
 <div>
   <EditorHeader publish={this.publishStory} loading={this.state.loading} />
@@ -145,24 +167,10 @@ class Editor extends Component {
                       <small>{this.props.user.email}</small>
                   </div>
               </div>
-              <label id='editor-label'>Update the link between repository with its papers</label>
+              <label id='editor-label'>Update the link</label>
               <form className="editor-form main-editor" autocomplete="off" >
-
-                {/* <div className={this.state.imgSrc != null ? 'file-upload-previewer' : 'file-upload-previewer hidden'}>
-                  <img src="" alt="" id="image_preview"/>
-                </div>
-
-                  <div className="existing-img-previewer" id="existing-img-previewer">
-                  </div>
-
                 <div className="form-group">
-                  <span className="picture_upload">
-                    <i className="fa fa-camera" onClick={this.handleClick}></i>
-                  </span>
-                </div> */}
-
-                <div className="form-group">
-                  <input className="editor-title" id="repo-title" placeholder="Name" type = 'text' value= {tool}/>
+                  <input className="editor-title" id="repo-title" placeholder="Name" type = 'text' value= {title}/>
                 </div>
 
                 <div className="form-group">
@@ -195,9 +203,9 @@ class Editor extends Component {
         );
     }
 }
-const mapStateToProps = state => {
-  return {
-      user: state.authUser.user
-  }
-}
-export default connect(mapStateToProps)(Editor);
+// const mapStateToProps = state => {
+//   return {
+//       user: state.authUser.user
+//   }
+// }
+export default connect(mapStateToProps, {getArticle})(Editor);
