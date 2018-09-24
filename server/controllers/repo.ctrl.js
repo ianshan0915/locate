@@ -51,9 +51,16 @@ module.exports = {
         }
     },
     getAll: (req, res, next) => {
-        Repo.find(req.params.id)
-        .populate('owner')
-        .populate('comments.author').exec((err, repo)=> {
+        let query = {}
+        let options = {
+            // select: '',
+            sort: {claps: -1},
+            populate: 'owner',
+            lean: true,
+            page: req.params.page,
+            limit: 200
+        }
+        Repo.paginate(query, options).then((err, repo)=> {
             if (err)
                 res.send(err)
             else if (!repo)
@@ -115,10 +122,16 @@ module.exports = {
      * query term
      */
     searchRepo: (req, res, next) => {
-        Repo.find({'$text': {'$search': req.params.query}})
-        .populate('owner')
-        // .populate('articles')
-        .populate('comments.author').exec((err, repo)=> {
+        let query = {'$text': {'$search': req.params.query}}
+        let options = {
+            // select: '',
+            sort: {claps: -1},
+            populate: 'owner',
+            lean: true,
+            page: req.params.page,
+            limit: 200
+        }        
+        Repo.paginate(query, options).then((err, repo)=> {
             if (err)
                 res.send(err)
             else if (!repo) {

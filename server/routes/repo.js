@@ -8,7 +8,7 @@ module.exports = (router) => {
      * get all articles
      */
     router
-        .route('/repos')
+        .route('/repos/:page')
         .get(repocontroller.getAll)
 
     /**
@@ -36,7 +36,7 @@ module.exports = (router) => {
      * search repos with a given term
      */
     router
-        .route('/repo/search/:query')
+        .route('/repo/search/:query/:page')
         .get(repocontroller.searchRepo)
         
     /**

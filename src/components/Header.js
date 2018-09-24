@@ -8,7 +8,7 @@ class Header extends Component {
 
     handleKeyPress (event) {
         if (event.key === 'Enter') {
-            this.props.searchArticles(event.target.value)
+            this.props.searchArticles(event.target.value, 1)
           }
     }
 
