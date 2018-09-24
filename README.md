@@ -17,7 +17,7 @@ This is a web application built using [React.js](https://reactjs.org), [Redux](h
 - Give feedback of related papers by updating them
 
 ### Installation
-* Git clone this repo [here](https://github.com/krissnawat/medium-clone-on-node).
+* Git clone this repo [here](https://github.com/ianshan0915/locate).
 * Move into the folder from your terminal:
 ```sh
     cd locate
