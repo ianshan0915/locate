@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom'
+import './App.css'
 
 import Feed from './components/Feed'
 import Profile from './components/Profile'
@@ -8,6 +9,10 @@ import ArticleView from './components/ArticleView'
 import Editor from './components/Editor'
 import requireAuthentication from './utils/requireAuth'
 import SignInWith from './components/SignInWith'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(far)
 //import  from './components'
 
 class App extends Component {
@@ -23,7 +28,8 @@ class App extends Component {
 
                     <Route path="/profile/:id" component={Profile} />
                     <Route path="/articleview/:id" component={ArticleView} />
-                    <Route path="/editor" component={requireAuthentication(Editor)} />
+                    <Route path="/editor/:repo/:paper" component={Editor} />
+                    {/* <Route path="/editor" component={requireAuthentication(Editor)} /> */}
                     <Route path="**" component={Feed} />
                 </Switch>
             </div>

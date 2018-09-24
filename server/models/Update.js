@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 let UpdateSchema = new mongoose.Schema(
     {
         comment: String,
-        type: String,
+        action: String,
         reviewer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

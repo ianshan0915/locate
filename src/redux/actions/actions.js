@@ -4,11 +4,11 @@ import axios from 'axios'
 //const url = "http://localhost:5000/api/"
 const url = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:5000/api/"
 
-export function loadArticles () {
+export function loadArticles (page) {
     return (dispatch) => {
-        axios.get(`${url}repos`)
+        axios.get(`${url}repos/${page}`)
         .then((res) => {
-            let articles = res.data
+            let articles = res.data.docs
             dispatch({type:'LOAD_ARTICLES', articles})
         }).catch((err) => {
             console.log(err)
@@ -30,12 +30,11 @@ export function getUserProfile (_id) {
     }
 }
 
-export function searchArticles (query_term) {
-    console.log(query_term)
+export function searchArticles (query_term, page) {
     return (dispatch) => {
-        axios.get(`${url}repo/search/${query_term}`)
+        axios.get(`${url}repo/search/${query_term}/${page}`)
         .then((res) => {
-            let articles = res.data
+            let articles = res.data.docs
             dispatch({type: 'LOAD_ARTICLES', articles})
         }).catch((err) => console.log(err))
     }
