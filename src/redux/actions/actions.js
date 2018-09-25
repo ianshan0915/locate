@@ -1,8 +1,8 @@
 /** */
 import axios from 'axios'
 
-const url = "http://uniutrecht01.nine.ch:5000/api/"
-// const url = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:5000/api/"
+// const url = "http://uniutrecht01.nine.ch:5000/api/"
+const url = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:5000/api/"
 
 export function loadArticles (page) {
     return (dispatch) => {

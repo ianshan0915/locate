@@ -10,7 +10,7 @@ const path = require('path')
 
 const app = express()
 const router = express.Router()
-//const url = process.env.MONGODB_URI || "mongodb://localhost:27017/medium"
+const url = process.env.MONGODB_URI || "mongodb://localhost:27017/test_db"
 // const url ="mongodb://alc:alc@ds237855.mlab.com:37855/alc"
 
 // /** configure cloudinary */
@@ -20,14 +20,14 @@ const router = express.Router()
 //     api_secret: '6vN978wHnfEr21pKrysWuu7_0UI'
 // })
 
-// /** connect to MongoDB datastore */
-// try {
-//     mongoose.connect(url, {
-//         //useMongoClient: true
-//     })    
-// } catch (error) {
+/** connect to MongoDB datastore */
+try {
+    mongoose.connect(url, {
+        useNewUrlParser: true
+    })    
+} catch (error) {
     
-// }
+}
 
 let port = process.env.PORT || 5000
 
@@ -45,7 +45,7 @@ app.use('/static',express.static(path.join(__dirname,'static')))
 app.use('/uploads',express.static(path.join(__dirname,'uploads')))
 app.use('/assets',express.static(path.join(__dirname,'assets')))
 
-// app.use('/api', router)
+app.use('/api', router)
 app.get('*', function(req, res) {
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
