@@ -4,6 +4,10 @@ let UpdateSchema = new mongoose.Schema(
     {
         comment: String,
         action: String,
+        upatedAt: {
+            type: Date,
+            default: Date.now
+        },
         reviewer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

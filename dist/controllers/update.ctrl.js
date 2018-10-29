@@ -15,7 +15,7 @@ module.exports = {
     },
     getAll: (req, res, next) => {
       Update.find(req.params.id)
-      .populate('author')
+      .populate('reviewer')
       .populate('article')
       .populate('repo').exec((err, update)=> {
           if (err)
@@ -28,8 +28,7 @@ module.exports = {
       })
     },    
     getUpdate: (req, res, next) => {
-        Update.findById(req.params.id)
-        .populate('author')
+        Update.find({'reviewer': req.params.id})
         .populate('article')
         .populate('repo').exec((err, update)=> {
             if (err)
