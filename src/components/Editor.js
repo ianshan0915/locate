@@ -21,6 +21,7 @@ class Editor extends Component {
     this.state = {
       repo: null,
       paper: null,
+      reviewer: null,
       action: '',
       comment: '',
       loading: false
@@ -41,7 +42,7 @@ class Editor extends Component {
     formdata.append('repo', this.state.repo)
     // formdata.append('image', this.state.imgSrc)
     formdata.append('article', this.state.paper)
-    formdata.append('reviewer', this.props.user._id)
+    formdata.append('reviewer', '5baa4c443e211b26fc9c5b26')
     formdata.append('action', document.getElementById('update-action').value)
     formdata.append('comment', document.getElementById('medium-editable').value)
     console.log(formdata)
@@ -57,6 +58,7 @@ class Editor extends Component {
         loading: false
       })
       console.log(res.data)
+      window.location.assign(`/articleview/${this.props.match.params.repo}`);
     }).catch((err)=>{console.log(err); this.setState({loading: false})})
   } 
 
@@ -136,9 +138,10 @@ class Editor extends Component {
       if(typeof document !== 'undefined')
         this.setState({
           repo: this.props.match.params.repo,
-          paper: this.props.match.params.paper,          
+          paper: this.props.match.params.paper,
+          reviewer: '5baa4c443e211b26fc9c5b26',        
           action: document.getElementById('update-action').value,
-          comment: `${editor.getContent(0).substring(0,30).toString()}...`
+          comment: editor.getContent(0)
         })
         console.log(this.state)
     })

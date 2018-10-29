@@ -1,5 +1,6 @@
 const initialState = {
     articles: [],
+    updates: [],
     article: {}
 }
 export default (state=initialState, action) => {
@@ -13,7 +14,19 @@ export default (state=initialState, action) => {
         // return {
         //     ...state,
         //     articles: action.articles
-        // }        
+        // }
+        case 'LOAD_UPDATES' :
+        console.log(state.updates)
+        return {
+            ...state,
+            updates: action.updates
+        }
+        console.log(state)
+        // case 'SEARCH_ARTICLES' :
+        // return {
+        //     ...state,
+        //     articles: action.articles
+        // }                
         case 'VIEW_ARTICLE':
         return {
             ...state,

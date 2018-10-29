@@ -40,6 +40,16 @@ export function searchArticles (query_term, page) {
     }
 }
 
+export function getUpdates () {
+    return (dispatch) => {
+        axios.get(`${url}updates`)
+        .then((res) => {
+            let updates = res.data
+            dispatch({type: 'LOAD_UPDATES', updates})
+        }).catch((err) => console.log(err))
+    }
+}
+
 export function getArticle (article_id) {
     return (dispatch) => {
         axios.get(`${url}repo/${article_id}`)

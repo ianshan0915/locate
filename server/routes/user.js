@@ -12,9 +12,9 @@ module.exports = (router) => {
     /**
      * get a user profile
      */
-    router
-        .route('/user/profile/:id')
-        .get(usercontroller.getUserProfile)
+    // router
+    //     .route('/user/profile/:id')
+    //     .get(usercontroller.getUserProfile)
 
     /**
      * adds a user
@@ -26,7 +26,7 @@ module.exports = (router) => {
     /**
      * follow a user
      */
-    router
-        .route('/user/follow')
-        .post(usercontroller.followUser)
+    // router
+    //     .route('/user/follow')
+    //     .post(usercontroller.followUser)
 }
