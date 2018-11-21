@@ -29,11 +29,11 @@ This is a web application built using [React.js](https://reactjs.org), [Redux](h
 ## App Screenshots
 
 ### **Article View**
-![](screenshots/article_view.png)
+![](screenshots/repo_view.png)
 
 
 ### **Feed**
-![](screenshots/feed.png)
+![](screenshots/link_update.png)
 
 
 ### **Profile**
