@@ -28,20 +28,13 @@ This is a web application built using [React.js](https://reactjs.org), [Redux](h
 
 ## App Screenshots
 
-### **Article View**
+### **Repository View**
 ![](screenshots/repo_view.png)
 
 
-### **Feed**
+### **Link update**
 ![](screenshots/link_update.png)
 
-
-### **Profile**
-![](screenshots/profile.png)
-
-
-### **SignInWith Google**
-![](screenshots/signinwith.png)
 
 
 ### Contributing
