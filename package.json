@@ -20,7 +20,7 @@
     "helmet": "^3.11.0",
     "history": "^4.7.2",
     "i": "^0.3.6",
-    "marked": "^0.3.14",
+    "marked": "^4.0.10",
     "medium-editor": "^5.23.3",
     "medium-editor-insert-plugin": "^2.5.0",
     "mongoose": "^5.0.6",
